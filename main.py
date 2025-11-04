@@ -22,9 +22,10 @@ for i in range(0, len(states_list)):
     print(answer_state)
 
     if answer_state == "Exit":
-        for state in states_list:
-            if state not in guessed_states:
-                missing_states.append(state)
+        missing_states = [state for state in states_list if state not in guessed_states]
+        # for state in states_list:
+        #     if state not in guessed_states:
+        #         missing_states.append(state)
 
         pandas.DataFrame(missing_states).to_csv("states_to_learn.csv")
         break
